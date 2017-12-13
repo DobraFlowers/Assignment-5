@@ -49,7 +49,7 @@ $db = new Database();
             <select class="form-control" id="location" name = "location">
                 <option value="-1">Select Location</option>
                 <?php
-                    foreach (locations as $l) { ?>
+                    foreach ($locations as $l) { ?>
                         <option value = "<?= $l["location"]?>"><?php echo $f ["location"]; ?></option>
                     <?php
                     }
