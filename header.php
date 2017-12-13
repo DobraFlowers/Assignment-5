@@ -28,7 +28,7 @@
 					<ul class="nav navbar-nav" style="color:#fff;">
 						<li style="color:#ffffff;"><a href="index.php">Query</a></li>
 						<li style="color:#ffffff;"><a href="update.php">Update</a></li>
-						<li style="color:#ffffff;"><a href= "insert.php">Insert</a></li>
+						<li style="color:#ffffff;"><a href= "insert.php">Add Sighting</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
