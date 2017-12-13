@@ -7,19 +7,34 @@ $db = new Database();
  $flowers = $db->getFlowers();
  $locations = $db->getFeatures();
  $message = null;
- if(isset($_GET) && isset($_GET['flower'])){
-  if(isset($_POST) && isset($_POST['editflower'])){
-			$reqs_flower = $_POST['editflower'];
-			$flower = $_POST['flower'];
-			$person = $_POST['person'];
-			$location = $_POST['location'];
-			$sighted = $_POST['sighted'];
-			$r = $db->addSighting($flower, $person, $location, $sighted);
-			if($r){
-				$message = $reqs_flower ."Sighting inserted";
-			}
-	 }
-	 }
+
+    if(isset($_GET) && isset($_GET['flower'])){
+        if($_GET['flower']== -1){
+            $message = "Please select a flower.";
+         }else{
+             $flower = $_GET['flower'];
+         }
+         if(isset($_GET) &&isset($_GET['location'])){
+                 if($_GET['location']== -1){
+                     $message = "Please select a location.";
+                  }else{
+                      $location = $_GET['location'];
+                  }
+                 if(isset($_POST) &&isset($_POST['person']) &&isset($_POST['sighted'])){
+                    $person = $_POST['person'];
+                    $sighted = $_POST['sighted'];
+                    $r = $db->addSighting($flower, $person, $location, $sighted);
+                    			if($r){
+                    				$message = "Sighitng of ". $flower ." was added!";
+                    			}else{
+                    				$message = $reqs_flower."Not added.";
+                    			}
+                 }
+
+
+             }
+    }
+
 ?>
 
 <form method="post" class="form-horizontal">
