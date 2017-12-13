@@ -33,7 +33,7 @@ public function getFeatures(){
 		$cur_row['class']=$row['CLASS'];
 		$cur_row['latitude']=$row['LATITUDE'];
 		$cur_row['longitude']= $row['LONGITUDE'];
-		$result_array[$row['LOCATION']] = $cur_row;
+		$result_array = $cur_row;
 
 }
 	return $result_array;
