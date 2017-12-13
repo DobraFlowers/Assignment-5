@@ -22,6 +22,22 @@ public function getFlowers(){
 }
 	return $result_array;
 }
+public function getFeatures(){
+	$this->getConnection();
+	$sql = "SELECT * FROM FEATURES ORDER BY location";
+	$results = $this->conn->query($sql);
+	$result_array = array();
+	foreach($results as $row){ 
+		$cur_row = array();
+		$cur_row['location']=$row['LOCATION'];
+		$cur_row['class']=$row['CLASS'];
+		$cur_row['latitude']=$row['LATITUDE'];
+		$cur_row['longitude']= $row['LONGITUDE'];
+		$result_array[$row['LOCATION']] = $cur_row;
+
+}
+	return $result_array;
+}
 public function getSightings($flower){
     $this->getConnection();
     $sql = "SELECT * FROM SIGHTINGS WHERE NAME = :flower";
@@ -51,7 +67,12 @@ public function updateFlower($flower, $genus, $species, $comname){
 	
 }
 public function addSighting($flower, $person, $location, $sighted){
-	
+	$this->getConnection();
+	$sql = "INSERT INTO SIGHTINGS(flower, person, location, sighted)
+	VALUES(:flower, :person, :location, :sighted)";
+	$stmt = $this->conn->prepare($sql);
+	if($stmt === False) return False;
+	return $stmt->execute(array(':flower'=>$flower, ':person'=>$person, ':location'=>$location, ':sighted'=>$sighted));
 }
 public function close(){
 	$conn = null;

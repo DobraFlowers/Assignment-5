@@ -2,13 +2,30 @@
 
 <?php require 'header.php';
 require 'database.php';
+
+$db = new Database(); 
+ $flowers = $db->getFlowers();
+ $message = null;
+ if(isset($_GET) && isset($_GET['flower'])){
+  if(isset($_POST) && isset($_POST['editflower'])){
+			$reqs_flower = $_POST['editflower'];
+			$flower = $_POST['flower'];
+			$person = $_POST['person'];
+			$location = $_POST['location'];
+			$sighted = $_POST['sighted'];
+			$r = $db->addSighting($flower, $person, $location, $sighted);
+			if($r){
+				$message = $reqs_flower ."Sighting inserted";
+			}
+	 }
+	 }
 ?>
 
 <form method="post" class="form-horizontal">
 <div class="form-group">
-	<label for="name" class="col-sm-2 control-label">Flower Name</label>
+	<label for="flower" class="col-sm-2 control-label">Flower Name</label>
 	<div class="col-sm-10">
-		<input type="text" class="form-control" id="name" name="name" placeholder="Common Name">
+		<input type="text" class="form-control" id="flower" name="flower" placeholder="Common Name">
 	</div>
 	</div>
 	<div class="form-group">
