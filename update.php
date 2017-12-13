@@ -78,7 +78,7 @@ else:
 	</div>
 	</div>
 
-	<input name="editflower" value="<?=$flower['genus']?>" type="hidden">
+	<input name="editflower" value="<?=$flower['comname']?>" type="hidden">
 	<div style="text-align: center;"><button type="submit" class="btn btn-primary">Save Changes</button></div>
 
 	</form>
