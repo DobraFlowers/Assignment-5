@@ -68,8 +68,7 @@ public function updateFlower($flower, $genus, $species, $comname){
 }
 public function addSighting($flower, $person, $location, $sighted){
 	$this->getConnection();
-	$sql = "INSERT INTO SIGHTINGS(flower, person, location, sighted)
-	VALUES(:flower, :person, :location, :sighted)";
+	$sql = "INSERT INTO SIGHTINGS(NAME, PERSON, LOCATION, SIGHTED) VALUES(:flower, :person, :location, :sighted)";
 	$stmt = $this->conn->prepare($sql);
 	if($stmt === False) return False;
 	return $stmt->execute(array(':flower'=>$flower, ':person'=>$person, ':location'=>$location, ':sighted'=>$sighted));
