@@ -41,9 +41,9 @@ require 'database.php';
 		?>
 	<form class="form-inline" method = "get">
 <div class="form-group">
-<label for="flower">Flower</label>
+<label for="flower">Update Flower</label>
 <select class="form-control" id="flower" name = "flower">
-	<option value="-1">Select One</option>
+	<option value="-1">Select Flower</option>
 	<?php
 		foreach ($flowers as $f) { ?>
 			<option value = "<?= $f["comname"]?>"><?php echo $f ["comname"]; ?></option>

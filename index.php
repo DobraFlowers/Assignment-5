@@ -23,9 +23,9 @@ require 'database.php';
 
 <form class="form-inline" method = "get">
 <div class="form_group">
-<label for="flower">Flower</label>
+<label for="flower">View Sightings</label>
 <select class="form-control" id="flower" name = "flower">
-	<option value="-1">Select One</option>
+	<option value="-1">Select Flower</option>
 	<?php
 		foreach ($flowers as $f) { ?>
 			<option value = "<?= $f["comname"]?>"><?php echo $f ["comname"]; ?></option>
@@ -41,7 +41,7 @@ require 'database.php';
 <hr>
 <?php if(isset($sightings)): ?>
 <h2>Sightings for <?= $flower?></h2>
-<table class= "table table-striped">
+<table class= "table table-striped" style="background-color:#ffffe6;">
 	<tr>
 		<th>Name</th>
 		<th>Person</th>

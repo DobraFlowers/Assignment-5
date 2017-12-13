@@ -14,7 +14,7 @@
 
 	<body>
 
-	<nav class="navbar">
+	<nav class="navbar" style="background-color:#c2d6d6;">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -23,12 +23,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Loyola and Giraldo</a>
+				<a class="navbar-brand" href="#" style="color:#ffffff;" style="font-family: Arial, Geneva, Helvetica, sans-serif;">Loyola and Giraldo</a>
 				<div id="navbar" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="index.php">Query</a></li>
-						<li><a href="update.php">Update</a></li>
-						<li><a href= "insert.php">Insert</a></li>
+					<ul class="nav navbar-nav" style="color:#fff;">
+						<li style="color:#ffffff;"><a href="index.php">Query</a></li>
+						<li style="color:#ffffff;"><a href="update.php">Update</a></li>
+						<li style="color:#ffffff;"><a href= "insert.php">Insert</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
