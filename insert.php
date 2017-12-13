@@ -7,41 +7,75 @@ $db = new Database();
  $flowers = $db->getFlowers();
  $locations = $db->getFeatures();
  $message = null;
+ $algo = null;
+ $algomas = null;
+ $masdealgo = null;
 
-    if(isset($_GET) && isset($_GET['flower'])){
+   /* if(isset($_GET) && isset($_GET['flower'])){
+        $algomas = "this is a thing";
         if($_GET['flower']== -1){
             $message = "Please select a flower.";
          }else{
              $flower = $_GET['flower'];
          }
          if(isset($_GET) &&isset($_GET['location'])){
+         $algo = "this is a thing";
                  if($_GET['location']== -1){
                      $message = "Please select a location.";
                   }else{
                       $location = $_GET['location'];
                   }
                  if(isset($_POST) &&isset($_POST['person']) &&isset($_POST['sighted'])){
+                 $masdealgo = "this is a thing";
+                    $algo = "one";
                     $person = $_POST['person'];
                     $sighted = $_POST['sighted'];
+                    $algomas = "two";
                     $r = $db->addSighting($flower, $person, $location, $sighted);
                     			if($r){
                     				$message = "Sighitng of ". $flower ." was added!";
                     			}else{
                     				$message = $reqs_flower."Not added.";
                     			}
+                    $masdealgo = "three";
                  }
 
 
              }
+    }*/
+    if(isset($_POST) && isset($_POST['addflower'])){
+        if(isset($_POST['flower'])==-1 || isset($_POST['person'])==-1 || isset($_POST['location'])==-1 || isset($_POST['sighted'])==-1){
+            $message = "Please fill in all fields.";
+        }else{
+            $name = $_POST['flower'];
+            $person = $_POST['person'];
+            $location = $_POST['location'];
+            $sighted = $_POST['sighted'];
+        }
+        $r = $db->addSighting($name, $person, $location, $sighted);
+        if($r){
+            $message = $name." was added";
+        }else{
+            $message = "nothing was added";
+        }
     }
 
+?>
+<div class="container">
+	<?php
+    if(!is_null($message)){
+        echo('<div class="panel panel-default "><div class="bg-danger panel-body">'.$message . '</div></div>');
+    }
+    echo $algo;
+    echo $algomas;
+    echo $masdealgo;
 ?>
 
 <form method="post" class="form-horizontal">
     <div class="form-group">
-	<label for="flower" class="col-sm-2 control-label">Flower Name</label>
+	<label for="name" class="col-sm-2 control-label">Flower Name</label>
 	<div class="col-sm-10">
-        <select class="form-control" id="flower" name = "flower">
+        <select class="form-control" id="name" name = "name">
             <option value="-1">Select Flower</option>
             <?php
                 foreach ($flowers as $f) { ?>
@@ -78,7 +112,7 @@ $db = new Database();
     		<input type="text" class="form-control" id="sighted" name="sighted" placeholder="YYYY-MM-DD">
     	</div>
     	</div>
-	<input name="addflower" value="Flower" type="hidden">
+	<input name="addflower" value="<?=$sightings['name']?>" type="hidden">
 	<div style="text-align: center;"><button type="submit" class="btn btn-success">Add New Sighting</button></div>
 </form>
 

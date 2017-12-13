@@ -66,12 +66,12 @@ public function updateFlower($flower, $genus, $species, $comname){
 	return $stmt->execute(array(':comname'=>$comname, ':genus'=>$genus, ':species'=>$species, ':flower'=>$flower));
 	
 }
-public function addSighting($flower, $person, $location, $sighted){
+public function addSighting($name, $person, $location, $sighted){
 	$this->getConnection();
-	$sql = "INSERT INTO SIGHTINGS(NAME, PERSON, LOCATION, SIGHTED) VALUES(:flower, :person, :location, :sighted)";
+	$sql = "INSERT INTO SIGHTINGS(NAME, PERSON, LOCATION, SIGHTED) VALUES(:name, :person, :location, :sighted)";
 	$stmt = $this->conn->prepare($sql);
 	if($stmt === False) return False;
-	return $stmt->execute(array(':flower'=>$flower, ':person'=>$person, ':location'=>$location, ':sighted'=>$sighted));
+	return $stmt->execute(array(':name'=>$name, ':person'=>$person, ':location'=>$location, ':sighted'=>$sighted));
 }
 public function close(){
 	$conn = null;
