@@ -77,13 +77,10 @@ else:
 		<input type="text" class="form-control" id="comname" name="comname" value="<?=$flower['comname']?>">
 	</div>
 	</div>
-<<<<<<< Updated upstream
-	<input name="editflower" value="<?=$flower['comname']?>" type="hidden">
-	<button type="submit" class="btn btn-default">Submit</button>
-=======
+
 	<input name="editflower" value="<?=$flower['genus']?>" type="hidden">
 	<div style="text-align: center;"><button type="submit" class="btn btn-primary">Save Changes</button></div>
->>>>>>> Stashed changes
+
 	</form>
 	<?php
 		endif;
