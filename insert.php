@@ -65,7 +65,7 @@ $db = new Database();
                 <option value="-1">Select Location</option>
                 <?php
                     foreach ($locations as $l) { ?>
-                        <option value = "<?= $l["location"]?>"><?php echo $f ["location"]; ?></option>
+                        <option value = "<?= $l["location"]?>"><?php echo $l ["location"]; ?></option>
                     <?php
                     }
                     ?>
