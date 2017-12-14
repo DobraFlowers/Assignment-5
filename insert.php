@@ -7,9 +7,10 @@ $db = new Database();
  $flowers = $db->getFlowers();
  $locations = $db->getFeatures();
  $message = null;
- $algo = null;
- $algomas = null;
- $masdealgo = null;
+ $name = null;
+ $person = null;
+ $location = null;
+ $sighted = null;
 
    /* if(isset($_GET) && isset($_GET['flower'])){
         $algomas = "this is a thing";
@@ -66,9 +67,10 @@ $db = new Database();
     if(!is_null($message)){
         echo('<div class="panel panel-default "><div class="bg-danger panel-body">'.$message . '</div></div>');
     }
-    echo $algo;
-    echo $algomas;
-    echo $masdealgo;
+    echo $name;
+    echo $person;
+    echo $location;
+	echo $sighted;
 ?>
 
 <form method="post" class="form-horizontal">
