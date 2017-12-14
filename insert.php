@@ -57,7 +57,7 @@ $db = new Database();
         }
         $r = $db->addSighting($name, $person, $location, $sighted);
         if($r){
-            $message = $name." was added";
+            $message = "New listing was added";
 			$success = True;
         }else{
             $message = "nothing was added";
