@@ -7,6 +7,7 @@ $db = new Database();
  $flowers = $db->getFlowers();
  $locations = $db->getFeatures();
  $message = null;
+ $success = null;
  $name = null;
  $person = null;
  $location = null;
@@ -47,6 +48,7 @@ $db = new Database();
     if(isset($_POST) && isset($_POST['addflower'])){
         if(isset($_POST['flower'])==-1 || isset($_POST['person'])==-1 || isset($_POST['location'])==-1 || isset($_POST['sighted'])==-1){
             $message = "Please fill in all fields.";
+			$success = False;
         }else{
             $name = $_POST['flower'];
             $person = $_POST['person'];
@@ -56,16 +58,21 @@ $db = new Database();
         $r = $db->addSighting($name, $person, $location, $sighted);
         if($r){
             $message = $name." was added";
+			$success = True;
         }else{
             $message = "nothing was added";
+			$success = False;
         }
     }
 
 ?>
 <div class="container">
 	<?php
-    if(!is_null($message)){
+    if(!is_null($message) && $success == False){
         echo('<div class="panel panel-default "><div class="bg-danger panel-body">'.$message . '</div></div>');
+    }
+	if(!is_null($message) && $success == True){
+        echo('<div class="panel panel-default "><div class="bg-success panel-body">'.$message . '</div></div>');
     }
     echo $name;
     echo $person;
