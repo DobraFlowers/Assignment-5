@@ -46,7 +46,7 @@ $db = new Database();
              }
     }*/
     if(isset($_POST) && isset($_POST['addflower'])){
-        if(isset($_POST['flower'])==-1 || isset($_POST['person'])==-1 || isset($_POST['location'])==-1 || isset($_POST['sighted'])==-1){
+        if(($_POST['flower'])==-1 || ($_POST['person'])== null || ($_POST['location'])==-1 || ($_POST['sighted'])== null){
             $message = "Please fill in all fields.";
 			$success = False;
         }else{
@@ -71,20 +71,17 @@ $db = new Database();
     if(!is_null($message) && $success == False){
         echo('<div class="panel panel-default "><div class="bg-danger panel-body">'.$message . '</div></div>');
     }
-	if(!is_null($message) && $success == True){
+	else if(!is_null($message) && $success == True){
         echo('<div class="panel panel-default "><div class="bg-success panel-body">'.$message . '</div></div>');
     }
-    echo $name;
-    echo $person;
-    echo $location;
-	echo $sighted;
+    
 ?>
 
 <form method="post" class="form-horizontal">
     <div class="form-group">
-	<label for="name" class="col-sm-2 control-label">Flower Name</label>
+	<label for="flower" class="col-sm-2 control-label">Flower Name</label>
 	<div class="col-sm-10">
-        <select class="form-control" id="name" name = "name">
+        <select class="form-control" id="flower" name = "flower">
             <option value="-1">Select Flower</option>
             <?php
                 foreach ($flowers as $f) { ?>
